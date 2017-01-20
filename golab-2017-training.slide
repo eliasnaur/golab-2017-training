@@ -18,18 +18,41 @@ elias.naur@gmail.com
    sdkmanager ndk-bundle
 - A working and recent Android device or emulator.
 - On a device, enable developer mode and USB debugging.
-- gomobile
-    go get -u golang.org/x/mobile/cmd/...
-	gombile init
 
 : I'd like you to go through these requirements, and make sure you've got the Android SDK or Android Studio installed in a recent version.
 
 : Then, I'd like you to download the Android NDK for your platform, preferably through the Android SDK manager. You can access the manager inside Android Studio, or you can run the sdkmanager tool with the argument ndk-bundle. I prefer the command line tool because I don't have much experience with Android Studio.
 
-: Then, install gomobile like you would any other Go tool, with go get.
-
-: And finally, initialize the gomobile environment with the gomobile init command.
-
 : Let's take a few minutes for everyone to get ready.
 
 : Please do speak up if you're stuck. The rest of this session won't be that interesting if you can't actually run your Go Android apps.
+
+- Environment
+- ANDROID_HOME should point to your Android SDK
+- gomobile
+    go get -u golang.org/x/mobile/cmd/...
+	gomobile init
+
+: Now, with everything installed, go get the gomobile and gobind tools through the go command.
+
+: Then, initialize the gomobile environment with the gomobile init command.
+
+* Training files
+
+    git clone github.com/eliasnaur/golab-2017-training
+
+Then, add the golab-2017-training directory to your GOPATH environment variable
+
+: To make it easier to start, I've added a very basic Android app you can use as a starting point for your own apps.
+
+: The project, basic, is set up to use the support library, the databinding library and finally, to use gomobile to bind your Go packages.
+
+* The first run
+
+Linux/macOS
+
+    ./gradlew installDebug
+
+Windows
+
+    gradlew.bat installDebug
