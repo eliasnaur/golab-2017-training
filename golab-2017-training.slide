@@ -41,7 +41,7 @@ elias.naur@gmail.com
 
 * Training files
 
-    $ git clone github.com/eliasnaur/golab-2017-training
+    $ git clone https://github.com/eliasnaur/golab-2017-training.git
 
 Add the golab-2017-training directory to your GOPATH.
 
