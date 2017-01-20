@@ -67,27 +67,79 @@ Windows
 
     abd log cat -s Go:* GoLog:*
 
-* Go structs
+Java
+
+	android.util.Log.i("Go", ...);
+
+
+* Structs
 
 Go
 
-    type T struct {
+    type AGoStruct struct {
       ...
     }
 
-    func NewT() *T {
+    func NewAGoStruct() *AGoStruct {
       ...
     }
 
-    func (t *T) F() {
+    func (s *AGoStruct) AGoMethod() {
       ...
     }
 
 Java
 
-	goapp.T t = new goapp.T();
-	t.f()
+	goapp.AGoStruct s = new goapp.AGoStruct();
+	s.aGoMethod()
 
 : Now that you can call a simple Go function from Java, try to add a Go struct, with a constructor and a method.
 
+: Remember to lower case the first letter of the method when calling it from Java.
+
 : Then, instantiate it from Java and call the method.
+
+: Try to add more methods, taking arguments or returning values.
+
+* Structs (cont.)
+
+You can use all the basic types (string, int, float32 etc.), other structs and interfaces.
+
+Go
+
+	func F(str *GoStruct, interf GoInterface, i int, f float32) string
+
+* Go interfaces
+
+Go
+
+	type SomeGoInterface interface {
+		F(i int) string
+	}
+
+Java
+
+	class ImplementsGo implements goapp.SomeGoInterface {
+		@Override public String f(i long, s goapp.AGoStruct) {
+			...
+		}
+	}
+
+: Let's try adding a Go interface to the goapp package.
+
+* Go interfaces (cont.)
+
+Go
+
+	func TakesAnInterface(i SomeGoInterface) string {
+		return i.F(10)
+	}
+
+Java
+
+	String res = goapp.takesAnInterface(new ImplementsGo());
+	android.util.Log.i("Go", "The result: " + res);
+
+: Then, implement that interface in Java, and use it from Go.
+
+: 
