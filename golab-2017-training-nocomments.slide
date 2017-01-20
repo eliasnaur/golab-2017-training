@@ -25,6 +25,12 @@ elias.naur@gmail.com
 
 * Training files
 
+Slides
+
+	https://talks.godoc.org/github.com/eliasnaur/golab-2017-training/golab-2017-training-nocomments.slide
+
+Example code
+
     $ git clone https://github.com/eliasnaur/golab-2017-training.git
 
 Add the golab-2017-training directory to your GOPATH.
