@@ -7,7 +7,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:textAppearance="@style/TextAppearance.AppCompat.Title"
-		android:layout_marginBottom="16dp"
+		android:layout_marginTop="16dp"
 		android:textColor="?android:attr/textColorPrimary"
 		android:layout_gravity="center_horizontal"
 		android:text="@{text}"/>
