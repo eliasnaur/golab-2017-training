@@ -32,8 +32,8 @@ elias.naur@gmail.com
 - Environment
 - ANDROID_HOME should point to your Android SDK
 - gomobile
-    go get -u golang.org/x/mobile/cmd/...
-	gomobile init
+	$ go get -u golang.org/x/mobile/cmd/...
+	$ gomobile init
 
 : Now, with everything installed, go get the gomobile and gobind tools through the go command.
 
@@ -41,9 +41,9 @@ elias.naur@gmail.com
 
 * Training files
 
-    git clone github.com/eliasnaur/golab-2017-training
+    $ git clone github.com/eliasnaur/golab-2017-training
 
-Then, add the golab-2017-training directory to your GOPATH environment variable
+Add the golab-2017-training directory to your GOPATH.
 
 : To make it easier to start, I've added a very basic Android app you can use as a starting point for your own apps.
 
@@ -51,13 +51,15 @@ Then, add the golab-2017-training directory to your GOPATH environment variable
 
 * The first run
 
+	$ cd golab-2017-basic/basic
+
 Linux/macOS
 
-    ./gradlew installDebug
+    $ ./gradlew installDebug
 
 Windows
 
-    gradlew.bat installDebug
+    $ gradlew.bat installDebug
 
 : If everything went well, you should now have a "Basic" app on your emulator or device.
 
@@ -65,7 +67,7 @@ Windows
 
 * Logging
 
-    abd log cat -s Go:* GoLog:*
+    $ abd log cat -s Go:* GoLog:*
 
 Java
 
@@ -142,4 +144,36 @@ Java
 
 : Then, implement that interface in Java, and use it from Go.
 
-: 
+* Reverse bindings
+
+Go
+
+	package gorev
+
+	import (
+		"Java/android/os"
+		"Java/android/support/v7/app"
+
+		"Java/android/databinding/DataBindingUtil"
+		"Java/gorev/databinding/ActivityMainBinding"
+
+		rlayout "Java/gorev/R/layout"
+
+		// The Java package for "gorev".
+		gopkg "Java/gorev"
+	)
+
+	type GoActivity struct {
+		app.AppCompatActivity
+	}
+
+
+* Reverse bindings (cont.)
+
+	func (a *GoActivity) OnCreate(this gopkg.GoActivity, b os.Bundle) {
+		this.Super().OnCreate(b)
+			db := DataBindingUtil.SetContentView(this, rlayout.Activity_main)
+			binding := ActivityMainBinding.Cast(db)
+			binding.SetText("Hello from the reverse")
+	}
+
