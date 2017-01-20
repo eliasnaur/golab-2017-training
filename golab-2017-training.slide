@@ -56,3 +56,5 @@ Linux/macOS
 Windows
 
     gradlew.bat installDebug
+
+: If everything went well, you should now have a "Basic" app on your emulator or device.

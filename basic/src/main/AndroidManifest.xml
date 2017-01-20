@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.golang.example.basic">
     <application android:label="Basic" android:theme="@style/Theme.App">
-		<activity android:name=".MainActivity" android:label="Basic 1" >
+		<activity android:name=".MainActivity" android:label="Basic" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

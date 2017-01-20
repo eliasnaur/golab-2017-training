@@ -12,6 +12,6 @@ public class MainActivity extends AppCompatActivity {
 	@Override public void onCreate(Bundle state) {
 		super.onCreate(state);
 		ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-		binding.setText(Goapp.Hello());
+		binding.setText(Goapp.hello());
 	}
 }
