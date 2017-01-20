@@ -1,0 +1,22 @@
+Write your next Android app in Go
+GoLab, Florence 2017
+
+Elias Naur
+elias.naur@gmail.com
+@elias_naur
+
+: Hi everyone. This training session is about at least some of the nitty-gritty details of using Go in your Android apps.
+
+: Since this is going to be a hands-on session, I'd like to start by getting the boring details done first.
+
+* Prerequisites
+
+- Laptop running a 64 bit OS; Linux, macOS or Windows.
+- Go 1.7 (64 bit).
+- Android SDK/Android studio.
+- Android NDK (64 bit), either standalone or downloaded through the Android SDK manager.
+- A working and recent Android device or emulator.
+
+: I'd like you to go through these requirements, and make sure you've got the Android SDK or Android Studio installed in a recent version
+
+: Then, I'd like you to either 
