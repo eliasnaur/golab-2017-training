@@ -27,6 +27,8 @@ elias.naur@gmail.com
 
 : Please do speak up if you're stuck. The rest of this session won't be that interesting if you can't actually run your Go Android apps.
 
+* Setup
+
 - Environment
 - ANDROID_HOME should point to your Android SDK
 - gomobile
@@ -58,3 +60,34 @@ Windows
     gradlew.bat installDebug
 
 : If everything went well, you should now have a "Basic" app on your emulator or device.
+
+: Now, let's take 15-20 minutes for you to get everything working and to play around with the project. Try to edit the goapp.go source file, the layout file activity_main.xml or the MainActivity.java file.
+
+* Logging
+
+    abd log cat -s Go:* GoLog:*
+
+* Go structs
+
+Go
+
+    type T struct {
+      ...
+    }
+
+    func NewT() *T {
+      ...
+    }
+
+    func (t *T) F() {
+      ...
+    }
+
+Java
+
+	goapp.T t = new goapp.T();
+	t.f()
+
+: Now that you can call a simple Go function from Java, try to add a Go struct, with a constructor and a method.
+
+: Then, instantiate it from Java and call the method.
