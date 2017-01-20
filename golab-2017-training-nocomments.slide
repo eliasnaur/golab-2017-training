@@ -1,0 +1,143 @@
+Write your next Android app in Go
+GoLab, Florence 2017
+
+Elias Naur
+elias.naur@gmail.com
+@elias_naur
+
+* Prerequisites
+
+- Laptop running a 64 bit OS; Linux, macOS or Windows.
+- Go 1.7 (64 bit).
+- Android SDK/Android studio.
+- Android NDK (64 bit), downloaded through the Android SDK manager. Command line:
+   sdkmanager ndk-bundle
+- A working and recent Android device or emulator.
+- On a device, enable developer mode and USB debugging.
+
+* Setup
+
+- Environment
+- ANDROID_HOME should point to your Android SDK
+- gomobile
+	$ go get -u golang.org/x/mobile/cmd/...
+	$ gomobile init
+
+* Training files
+
+    $ git clone https://github.com/eliasnaur/golab-2017-training.git
+
+Add the golab-2017-training directory to your GOPATH.
+
+* The first run
+
+	$ cd golab-2017-basic/basic
+
+Linux/macOS
+
+    $ ./gradlew installDebug
+
+Windows
+
+    $ gradlew.bat installDebug
+
+* Logging
+
+    $ abd log cat -s Go:* GoLog:*
+
+Java
+
+	android.util.Log.i("Go", ...);
+
+
+* Structs
+
+Go
+
+    type AGoStruct struct {
+      ...
+    }
+
+    func NewAGoStruct() *AGoStruct {
+      ...
+    }
+
+    func (s *AGoStruct) AGoMethod() {
+      ...
+    }
+
+Java
+
+	goapp.AGoStruct s = new goapp.AGoStruct();
+	s.aGoMethod()
+
+* Structs (cont.)
+
+You can use all the basic types (string, int, float32 etc.), other structs and interfaces.
+
+Go
+
+	func F(str *GoStruct, interf GoInterface, i int, f float32) string
+
+* Go interfaces
+
+Go
+
+	type SomeGoInterface interface {
+		F(i int) string
+	}
+
+Java
+
+	class ImplementsGo implements goapp.SomeGoInterface {
+		@Override public String f(i long, s goapp.AGoStruct) {
+			...
+		}
+	}
+
+* Go interfaces (cont.)
+
+Go
+
+	func TakesAnInterface(i SomeGoInterface) string {
+		return i.F(10)
+	}
+
+Java
+
+	String res = goapp.takesAnInterface(new ImplementsGo());
+	android.util.Log.i("Go", "The result: " + res);
+
+* Reverse bindings
+
+Go
+
+	package gorev
+
+	import (
+		"Java/android/os"
+		"Java/android/support/v7/app"
+
+		"Java/android/databinding/DataBindingUtil"
+		"Java/gorev/databinding/ActivityMainBinding"
+
+		rlayout "Java/gorev/R/layout"
+
+		// The Java package for "gorev".
+		gopkg "Java/gorev"
+	)
+
+	type GoActivity struct {
+		app.AppCompatActivity
+	}
+
+
+* Reverse bindings (cont.)
+
+	func (a *GoActivity) OnCreate(this gopkg.GoActivity, b os.Bundle) {
+		this.Super().OnCreate(b)
+			db := DataBindingUtil.SetContentView(this, rlayout.Activity_main)
+			binding := ActivityMainBinding.Cast(db)
+			binding.SetText("Hello from the reverse")
+	}
+
